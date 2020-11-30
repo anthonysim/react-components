@@ -1,6 +1,6 @@
 var GroceryList = () => {
   let items = ['milk', 'cheese'];
-  let groceries = items.map((item, i) => <GroceryListItem key={i}>{item}</GroceryListItem>)
+  let groceries = items.map((item, i) => <GroceryListItem key={i} grocery={item} />)
 
   return (
     <div>
@@ -10,42 +10,35 @@ var GroceryList = () => {
 }
 
 class GroceryListItem extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
       hover: false
     }
   }
 
-
   render() {
     const boldHandler = () => {
       this.setState({
         hover: true
-    })
-  }
+      })
+    }
 
-  const normalHandler = () => {
-    this.setState({
-      hover: false
-  })
-}
-
-    let style = {
-      fontWeight: this.state.hover ? 'bold' : 'normal'
+    const normalHandler = () => {
+      this.setState({
+        hover: false
+      })
     }
 
     return (
       <div>
-        <ul>
         <li
-          style={style}
+          style={{fontWeight: this.state.hover ? 'bold' : 'normal'}}
           onMouseOver={boldHandler}
           onMouseOut={normalHandler}
         >
-          {this.props.children}
+          {this.props.grocery}
         </li>
-        </ul>
       </div>
     )
   }
