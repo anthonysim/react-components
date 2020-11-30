@@ -3,9 +3,9 @@ var GroceryList = () => {
   let groceries = items.map((item, i) => <GroceryListItem key={i} grocery={item} />)
 
   return (
-    <div>
-      {groceries}
-    </div>
+      <ul>
+        {groceries}
+      </ul>
   );
 }
 
@@ -31,7 +31,6 @@ class GroceryListItem extends React.Component {
     }
 
     return (
-      <div>
         <li
           style={{fontWeight: this.state.hover ? 'bold' : 'normal'}}
           onMouseOver={boldHandler}
@@ -39,7 +38,6 @@ class GroceryListItem extends React.Component {
         >
           {this.props.grocery}
         </li>
-      </div>
     )
   }
 }
